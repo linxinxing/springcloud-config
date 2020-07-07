@@ -35,3 +35,8 @@ spring:
           predicates:
             - Path=/api/hiddenmessage
           uri: lb://consumer-client
+          
+        - id: authenticate
+          predicates:
+            - Path=/api/authenticate
+          uri: lb://consumer-client
