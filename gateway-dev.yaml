@@ -18,10 +18,10 @@ spring:
         - id: test_route1
           uri: lb://consumer-client
           predicates:
-            - Path=/test
+            - Path=/hello/test
             - After=2020-07-03T16:16:59.092+08:00[Asia/Shanghai]
 
         - id: test_route2
           predicates:
-            - Path=/hystrix
+            - Path=/hello/hystrix
           uri: lb://producer-client
