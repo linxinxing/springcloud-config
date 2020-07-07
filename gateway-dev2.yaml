@@ -20,10 +20,14 @@ spring:
           predicates:
             - Path=/hello/**
             - After=2020-07-03T16:16:59.092+08:00[Asia/Shanghai]
+          filters:
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             
         - id: api
           predicates:
             - Path=/api/**
           uri: lb://consumer-client
+          filters:
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
           
        
