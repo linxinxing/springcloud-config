@@ -15,13 +15,23 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: test_route1
+        - id: test
           uri: lb://consumer-client
           predicates:
             - Path=/hello/test
             - After=2020-07-03T16:16:59.092+08:00[Asia/Shanghai]
 
-        - id: test_route2
+        - id: hystrix2
           predicates:
-            - Path=/hello/hystrix
+            - Path=/hello/hystrix2
+          uri: lb://consumer-client
+
+        - id: person
+          predicates:
+            - Path=/api/person
+          uri: lb://consumer-client
+          
+        - id: hiddenmessage
+          predicates:
+            - Path=/api/hiddenmessage
           uri: lb://consumer-client
