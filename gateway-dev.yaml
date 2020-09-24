@@ -1,17 +1,9 @@
-# eureka:
-#   client:
-#     serviceUrl:
-#       defaultZone: http://localhost:7000/eureka/
-#   instance:
-#     leaseRenewalIntervalInSeconds: 10
-service
-    unique
-        id:user1000
-com
-  alipay
-      sofa
-          rpc
-            registry-address:sofa://localhost:9603
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
 spring:
   application:
     name: cloud-gateway
@@ -21,26 +13,20 @@ spring:
         locator:
           enabled: true
       routes:
-#         - id: hello
-#           uri: lb://consumer-client
-#           predicates:
-#             - Path=/hello/**
-#             - After=2020-07-03T16:16:59.092+08:00[Asia/Shanghai]
-#           filters:
-#           - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-            
-#         - id: api
-#           predicates:
-#             - Path=/api/**
-#           uri: lb://consumer-client
-#           filters:
-#           - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-          
-          - id: api
+        - id: hello
+          uri: lb://consumer-client
           predicates:
-            - Path=/createUser/**
-          uri: lb://stock_mng
+            - Path=/hello/**
+            - After=2020-07-03T16:16:59.092+08:00[Asia/Shanghai]
           filters:
           - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            
+        - id: api
+          predicates:
+            - Path=/api/**
+          uri: lb://consumer-client
+          filters:
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+         
           
        
